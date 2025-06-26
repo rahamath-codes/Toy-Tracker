@@ -1,0 +1,14 @@
+.footer {
+  border-top: 1px solid #cfc3c3;
+  font-size: 15px;
+  color: #555;
+  position: relative;
+}
+.footer a {
+  color: #d9e1eb;
+  text-decoration: none;
+  font-style: italic;
+}
+.footer a:hover {
+  text-decoration: underline;
+}

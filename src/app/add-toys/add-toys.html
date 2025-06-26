@@ -1,0 +1,46 @@
+<div class="container" style="max-width: 500px;">
+  <h3 class="mb-4">Add New Toy</h3>
+
+  <form [formGroup]="toyForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <div class="mb-3">
+      <label for="toyName" class="form-label">Toy Name</label>
+      <input type="text" id="toyName" formControlName="toyName" class="form-control">
+      <div *ngIf="toyForm.get('toyName')?.touched && toyForm.get('toyName')?.invalid" class="text-danger small">
+        <div *ngIf="toyForm.get('toyName')?.errors?.['required']">Enter the Toy name</div>
+        <div *ngIf="toyForm.get('toyName')?.errors?.['minlength']">Enter at least 3 characters</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input type="number" id="price" formControlName="price" class="form-control">
+      <div *ngIf="toyForm.get('price')?.touched && toyForm.get('price')?.invalid" class="text-danger small">
+        <div *ngIf="toyForm.get('price')?.errors?.['required']">Enter the price</div>
+        <div *ngIf="toyForm.get('price')?.errors?.['min']">Price must be positive</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="ageRange" class="form-label">Age Range</label>
+      <select id="ageRange" formControlName="ageRange" class="form-select">
+        <option value="" disabled>Select age range</option>
+        <option value="0-6 months">0 - 6 months</option>
+        <option value="6-12 months">6 - 12 months</option>
+        <option value="1-2 years">1 - 2 years</option>
+      </select>
+      <div *ngIf="toyForm.get('ageRange')?.touched && toyForm.get('ageRange')?.invalid" class="text-danger small">
+        Age range is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Toy Image</label>
+      <input type="file" id="image" class="form-control" accept="image/*">
+      <div *ngIf="toyForm.get('image')?.touched && toyForm.get('image')?.invalid" class="text-danger small">
+        Image is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="toyForm.invalid">Add Toy</button>
+  </form>
+</div>

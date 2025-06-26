@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <h3 class="mb-4">Toy Wishlist</h3>
+<div class="d-flex">
+  <div class="mb-3">
+  <label for="ageFilter" class="form-label">Filter by Age Range</label>
+  <select id="ageFilter" class="form-select" [(ngModel)]="selectedAgeRange">
+    <option value="">All</option>
+    <option value="0-6 months">0 - 6 months</option>
+    <option value="6-12 months">6 - 12 months</option>
+    <option value="1-2 years">1 - 2 years</option>
+  </select>
+</div>
+  
+<div class="mb-3 ms-4">
+  <label for="priceFilter" class="form-label">Filter by Price Range</label>
+  <select id="priceFilter" class="form-select" [(ngModel)]="selectedPriceRange">
+    <option value="">All</option>
+    <option value="1-100">₹1 - ₹100</option>
+    <option value="100-500">₹100 - ₹500</option>
+    <option value="500-1000">₹500 - ₹1000</option>
+    <option value="1000+">More than ₹1000</option>
+  </select>
+</div>
+</div>
+ <div *ngIf="toys.length === 0" class="alert alert-info text-center">
+    No toys added yet.
+</div>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+   <div class="col" *ngFor="let toy of toys | agefilter:selectedAgeRange | pricefilter :selectedPriceRange">
+      <div class="card h-100 shadow-sm" id="card">
+        <img src="images/teddy-2.jpg" class="card-img-top" style="height: 200px; object-fit:cover;">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+             <h5 class="card-title mb-0">{{ toy.toyName }}</h5>
+            <button class="btn p-0 favorite-btn" (click)="markAsFavorite(toy.toyName)">
+             {{ toy.isFavorite ? '❤️' : '🤍' }}
+              </button>
+          </div>
+          <p class="card-text mb-1"><b>Price : </b> ₹ {{ toy.price }}</p>
+          <p class="card-text"><b>Age Range : </b> {{ toy.ageRange }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

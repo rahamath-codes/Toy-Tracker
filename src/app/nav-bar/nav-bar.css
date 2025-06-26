@@ -1,0 +1,22 @@
+a{
+    font-weight: 600;
+    color: white;
+    padding: 5px 3px;
+    border-radius:5px;
+}
+a:hover{
+    background-color:rgba(255, 255, 255, 0.127);
+    color: white;
+}
+.dropdown-item:hover{
+        background-color: rgba(128, 128, 128, 0.11);
+        text-decoration: none;
+}
+.navbar-toggler {
+  border:white;    
+  outline: none !important; 
+  box-shadow: none !important; 
+}
+#navbarSupportedContent{
+  margin-right: 50px !important
+}
